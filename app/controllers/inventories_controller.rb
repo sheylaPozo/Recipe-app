@@ -1,16 +1,13 @@
+# frozen_string_literal: true
+
 class InventoriesController < ApplicationController
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
-  def create
-  end
+  def create; end
 
-  def destroy
-  end
+  def destroy; end
 
-  def compare
-  end
+  def compare; end
 end
