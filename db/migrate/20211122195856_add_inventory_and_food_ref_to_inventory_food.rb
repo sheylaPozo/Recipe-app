@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddInventoryAndFoodRefToInventoryFood < ActiveRecord::Migration[6.1]
   def change
     add_reference :inventory_foods, :food, null: false, foreign_key: true

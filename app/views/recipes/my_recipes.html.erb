@@ -1,3 +1,17 @@
 <%= render partial: "shared/header" %>
-<h1>Recipes#my_recipes</h1>
-<p>Find me in app/views/recipes/my_recipes.html.erb</p>
+<div class="container">
+  <h1>My Recipes</h1>
+  <div class='recipes'>
+    <% @recipes.each do |recipe|%>
+      <div class='recipe'>
+        <div class='left'>
+          <p class='r-name'><%= recipe.name%> </p>
+          <%= button_to "Delete", recipes_destroy_path(id: recipe.id), method: :post, class: 'delete-btn'  %>
+        </div>
+        <div class='right'>
+          <p class='r-description'><%= recipe.description%></p>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
