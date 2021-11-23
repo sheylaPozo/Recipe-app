@@ -28,11 +28,13 @@ body {
 .nav > .nav-header {
   display: inline;
 }
+
 .nav > .nav-header > .nav-title {
   display: inline-block;
   font-size: 22px;
   padding: 10px 10px 10px 10px;
 }
+
 .nav > .nav-links {
   display: inline;
   float: right;
