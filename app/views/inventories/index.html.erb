@@ -1,3 +1,7 @@
 <%= render partial: "shared/header" %>
-<h1>Inventories#index</h1>
-<p>Find me in app/views/inventories/index.html.erb</p>
+<h1 class="inventory-title">Inventories</h1>
+<%= button_to('New Inventory', '/inventories/new') %>
+<div class="separation bar">
+<% @inventories.each do |inventory| %>
+  <%= render partial: "inventories/inventory", object: inventory %>
+<% end %>
