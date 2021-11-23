@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/recipes/create', to: 'recipes#create'
   post '/recipes/destroy', to: 'recipes#destroy'
   get '/foods', to: 'foods#index'
-  post '/foods/create' , to: 'foods#create'
+  post '/foods/create', to: 'foods#create'
   post '/foods/destroy', to: 'foods#destroy'
   get '/inventories', to: 'inventories#index'
   get 'inventories/:inventory_id', to: 'inventories#show'
