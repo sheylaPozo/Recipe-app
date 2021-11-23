@@ -14,43 +14,43 @@
  *= require_self
  */
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
- .nav {
-    height: 47px;
-    width: 100%;
-    background-color: skyblue;
-    position: relative;
-  }
-   
-  .nav > .nav-header {
-    display: inline;
-  }
-  .nav > .nav-header > .nav-title {
-    display: inline-block;
-    font-size: 22px;
-    padding: 10px 10px 10px 10px;
-  }
-  .nav > .nav-links {
-    display: inline;
-    float: right;
-    font-size: 18px;
-  }
-   
-  .nav > .nav-links > a {
-    display: inline-block;
-    padding: 13px 10px 13px 10px;
-    text-decoration: none;
-    color: black;
-  }
-   
-  .nav > .nav-links > a:hover {
-    background-color: rgba(45, 23, 170, 0.3);
-  }
+.nav {
+  height: 47px;
+  width: 100%;
+  background-color: skyblue;
+  position: relative;
+}
 
-  .nav > .nav-btn,
-  .nav > #nav-check {
-    display: none;
-  }
+.nav > .nav-header {
+  display: inline;
+}
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  padding: 10px 10px 10px 10px;
+}
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav > .nav-links > a:hover {
+  background-color: rgba(45, 23, 170, 0.3);
+}
+
+.nav > .nav-btn,
+.nav > #nav-check {
+  display: none;
+}
