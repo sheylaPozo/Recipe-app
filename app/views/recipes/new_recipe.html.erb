@@ -1,0 +1,33 @@
+<div class='form-page'>
+  <%= form_with model: @recipe, url: recipes_create_path do |form|%>
+    <div class="form-container">
+      <h1>Create a new recipe</h1>
+      <div class='field'>
+        <%= form.label :name, 'Name' %>
+        <%= form.text_field :name %>
+      </div>
+      <div class='field'>
+        <%= form.label :description, 'Description' %>
+        <%= form.text_area :description %>
+      </div>
+      <div class='field'>
+        <%= form.label :cooking_time, 'Cooking_time' %>
+        <%= form.text_field :cooking_time %>
+      </div>
+      <div class='field'>
+        <%= form.label :preparation_time, 'Preparation_time' %>
+        <%= form.text_field :preparation_time %>
+      </div>
+      <div class='field'>
+        <%= form.label :is_public, 'make it public?' %>
+        <%= form.check_box :is_public %>
+      </div>
+      <div>
+      <%= form.submit "Submit"%>
+      <a href= javascript:history.back()>
+      <div>Go Back</div>
+      </a>
+      </div>
+    </div>
+  <% end %>
+</div>
