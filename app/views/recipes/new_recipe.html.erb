@@ -2,31 +2,37 @@
   <%= form_with model: @recipe, url: recipes_create_path do |form|%>
     <div class="form-container">
       <h1>Create a new recipe</h1>
+      <div class="separation-bar">
+      </div>
       <div class='field'>
         <%= form.label :name, 'Name' %>
-        <%= form.text_field :name %>
+        <%= form.text_field :name, class: 'input' %>
       </div>
       <div class='field'>
         <%= form.label :description, 'Description' %>
-        <%= form.text_area :description %>
+        <%= form.text_area :description, class: 'input' %>
       </div>
       <div class='field'>
         <%= form.label :cooking_time, 'Cooking_time' %>
-        <%= form.text_field :cooking_time %>
+        <%= form.text_field :cooking_time, class: 'input' %>
       </div>
       <div class='field'>
         <%= form.label :preparation_time, 'Preparation_time' %>
-        <%= form.text_field :preparation_time %>
+        <%= form.text_field :preparation_time, class: 'input'%>
       </div>
       <div class='field'>
         <%= form.label :is_public, 'make it public?' %>
-        <%= form.check_box :is_public %>
+        <div>
+          <%= form.check_box :is_public %>
+        </div>
       </div>
       <div>
-      <%= form.submit "Submit"%>
-      <a href= javascript:history.back()>
-      <div>Go Back</div>
-      </a>
+        <%= form.submit "Submit", class: 'create_btn'%>
+      </div>
+      <div class='go-back'>
+        <a href= javascript:history.back() class='delete-btn'>
+          Go Back
+        </a>
       </div>
     </div>
   <% end %>
