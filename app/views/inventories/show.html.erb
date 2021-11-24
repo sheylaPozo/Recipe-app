@@ -1,2 +1,15 @@
-<h1>Inventories#show</h1>
-<p>Find me in app/views/inventories/show.html.erb</p>
+<%= render partial: "shared/header" %>
+<div class="container">
+<h1 class="inventory-title"><%= @inventory.name %></h1>
+<p class="inventory-description dont-overflow"><%= @inventory.description %></p>
+<%= form_with model: @inventory_food, class: "inventory-food-form", url: '/inventories/create' do |form| %>
+  <h3 class="">Add Food: </h3>
+  <%= form.label :food %>
+  <%= form.collection_select :food, @food_options ,:id , :name%>
+  <%= form.label :quantity %>
+  <%= form.text_field :quantity, data: {autonumeric: {mDec: 0}} %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= form.submit "Submit", class: "submit" %>
+  <% end %>
+  <div class="separation-bar">
+</div>

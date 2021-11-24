@@ -73,3 +73,8 @@ body {
   border-radius: 5px;
   padding: 4px 12px 4px 12px;
 }
+
+.dont-overflow {
+  white-space: pre-line;
+  word-wrap: break-word;
+}

@@ -13,6 +13,7 @@ import "channels"
 //= require turbolinks
 //= require bootstrap
 //= require_tree.
+//= require autonumeric
 
 Rails.start()
 Turbolinks.start()

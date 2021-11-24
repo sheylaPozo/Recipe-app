@@ -64,3 +64,4 @@ gem 'popper_js'
 gem 'rack-cors'
 gem 'rswag'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'autonumeric-rails'
