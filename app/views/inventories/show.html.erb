@@ -16,6 +16,7 @@
   <h3 class="">There is not food to add </h3>
   <% end %>
   <div class="separation-bar">
+  <% if(@inventory_foods.length > 0) %>
   <table>
   <thead>
     <tr>
@@ -25,17 +26,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td data-column="Food"></td>
-      <td data-column="Quantity Name"></td>
-      <td data-column="Action"></td>
-    </tr>
-    <tr>
-      <td data-column="First Name">Szabi</td>
-      <td data-column="Last Name">Nagy</td>
-      <td data-column="Job Title">Chief Sandwich Eater</td>
-      <td data-column="Twitter">@szabi</td>
-    </tr>
+<% @inventory.inventory_foods.each do |inventory_food| %>
+  <%= render partial: "inventories/inventory_food", object: inventory_food %>
+<% end %>
   </tbody>
 </table>
+<% end %>
 </div>

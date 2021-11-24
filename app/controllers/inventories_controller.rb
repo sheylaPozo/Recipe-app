@@ -34,17 +34,35 @@ class InventoriesController < ApplicationController
   def add
     @current_user = current_user
     @inventory = @current_user.inventories.find(params[:inventory_id])
-    temp = params
     inv_food = InventoryFood.new
     inv_food.inventory = @inventory;
-    inv_food.food =Food.find(params[:food])
+    inv_food.food = Food.find(params[:food])
+    inv_food.quantity = params[:quantity]
+    
 
     redirect_to(request.env['HTTP_REFERER']) if inv_food.save
   end
 
+  def remove
+    @current_user = current_user
+    inv_food = InventoryFood.find(params[:inv_fod_id])
+
+    redirect_to(request.env['HTTP_REFERER']) if inv_food.destroy
+  end
+
   
 
-  def destroy; end
+  def destroy
+    @inventory = Inventory.find(params[:id])
+    if(@inventory != nil)
+      @inventory.inventory_foods.each do |inventory_food|
+        InventoryFood.delete_by(id: inventory_food.id)
+      end
+    end
+    @inventory.destroy
+    redirect_to(request.env['HTTP_REFERER'], notice: 'Inventory deleted succesfully')
+  end
+
 
   def compare; end
 end
