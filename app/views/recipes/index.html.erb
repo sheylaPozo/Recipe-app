@@ -1,11 +1,16 @@
 <%= render partial: "shared/header" %>
 <div class="container">
   <h1>Public Recipes</h1>
+  <div class='create_btn_div'>
+    <%= link_to 'Create recipe', recipes_create_recipe_path, class: 'create_btn'%>
+  </div>
   <div class='recipes'>
     <% @recipes.each do |recipe|%>
       <div class='recipe'>
         <div class='left'>
-          <p class='r-name'><%= recipe.name%> </p>
+          <a href=<%="recipes/"+recipe.id.to_s %> >
+            <p class='r-name'><%= recipe.name%> </p>
+          </a>
           <p class='author-name'>By: <%= User.find_by(id: recipe.user_id).name%></p>
         </div>
         <div class='right'>
