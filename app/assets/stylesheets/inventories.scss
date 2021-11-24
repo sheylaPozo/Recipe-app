@@ -40,6 +40,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 20px;
 }
+
 .-a {
   color: black;
   text-decoration: none;
@@ -52,12 +53,12 @@
 .separation-bar {
   position: relative;
   margin-top: 40px;
-  height: 1px;
   content: "";
   top: 0;
   width: 90%;
   height: 1px;
-  background-image: linear-gradient(
+  background-image:
+  linear-gradient(
     to right,
     transparent,
     rgb(48, 49, 51),
