@@ -7,7 +7,16 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new
   end
 
-  def show; end
+  def show
+    @current_user = current_user
+
+    @inventory = @current_user.inventories.find(params[:inventory_id])
+    @inventory_foods =  @inventory.inventory_foods.all
+    @already_inside = @inventory_foods.pluck(:food_id)
+
+    @food_options = Food.where.not(id: @already_inside)
+
+  end
 
   def create
     @inventory = Inventory.new
