@@ -1,7 +1,19 @@
 <%= render partial: "shared/header" %>
+<div class="container">
 <h1 class="inventory-title">Inventories</h1>
-<%= button_to('New Inventory', '/inventories/new') %>
-<div class="separation bar">
+<%= form_with model: @inventory, class: "inventory-form", url: '/inventories/create' do |form| %>
+  <h3 class="">Create: </h3>
+  <%= form.label :name %>
+  <%= form.text_field :name%>
+  <%= form.label :description %>
+  <%= form.text_field :description%>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= form.submit "Submit", class: "submit" %>
+  <% end %>
+<div class="separation-bar">
+</div>
+<div class="inventories">
 <% @inventories.each do |inventory| %>
   <%= render partial: "inventories/inventory", object: inventory %>
 <% end %>
+</div>
