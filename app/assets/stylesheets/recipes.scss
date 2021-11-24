@@ -26,6 +26,7 @@
         a {
           text-decoration: none;
           color: black;
+
           .r-name {
             font-weight: bold;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -125,7 +126,8 @@
   top: 0;
   width: 90%;
   height: 1px;
-  background-image: linear-gradient(
+  background-image: 
+  linear-gradient(
     to right,
     transparent,
     rgb(48, 49, 51),
