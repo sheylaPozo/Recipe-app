@@ -22,11 +22,7 @@ class RecipesController < ApplicationController
     @recipe.preparation_time = params[:preparation_time]
     @recipe.cooking_time = params[:cooking_time]
     @recipe.description = params[:description]
-    if params[:is_public] == "1"
-      @recipe.is_public = true
-    else
-      @recipe.is_public = false
-    end
+    @recipe.is_public = params[:is_public] == '1'
     redirect_to('/recipes/my_recipes', notice: 'recipe created succesfully') if @recipe.save
   end
 
