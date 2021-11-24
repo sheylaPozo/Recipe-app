@@ -2,14 +2,40 @@
 <div class="container">
 <h1 class="inventory-title"><%= @inventory.name %></h1>
 <p class="inventory-description dont-overflow"><%= @inventory.description %></p>
-<%= form_with model: @inventory_food, class: "inventory-food-form", url: '/inventories/create' do |form| %>
+<% if(@food_options.length > 0) %>
+<%= form_with model: @inventory_food, class: "inventory-food-form", url: "/inventories/#{@inventory.id}/add" do |form| %>
   <h3 class="">Add Food: </h3>
   <%= form.label :food %>
-  <%= form.collection_select :food, @food_options ,:id , :name%>
+  <%= form.collection_select :food, @food_options ,:id , :name %>
   <%= form.label :quantity %>
-  <%= form.text_field :quantity, data: {autonumeric: {mDec: 0}} %>
+  <%= form.number_field :quantity, min: 1, value: 1 %>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%= form.submit "Submit", class: "submit" %>
   <% end %>
+  <% else %>
+  <h3 class="">There is not food to add </h3>
+  <% end %>
   <div class="separation-bar">
+  <table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-column="Food"></td>
+      <td data-column="Quantity Name"></td>
+      <td data-column="Action"></td>
+    </tr>
+    <tr>
+      <td data-column="First Name">Szabi</td>
+      <td data-column="Last Name">Nagy</td>
+      <td data-column="Job Title">Chief Sandwich Eater</td>
+      <td data-column="Twitter">@szabi</td>
+    </tr>
+  </tbody>
+</table>
 </div>

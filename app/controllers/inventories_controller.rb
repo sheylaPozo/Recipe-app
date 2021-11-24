@@ -15,7 +15,6 @@ class InventoriesController < ApplicationController
     @already_inside = @inventory_foods.pluck(:food_id)
 
     @food_options = Food.where.not(id: @already_inside)
-
   end
 
   def create
@@ -31,6 +30,19 @@ class InventoriesController < ApplicationController
 
     redirect_to(request.env['HTTP_REFERER']) if @inventory.save
   end
+
+  def add
+    @current_user = current_user
+    @inventory = @current_user.inventories.find(params[:inventory_id])
+    temp = params
+    inv_food = InventoryFood.new
+    inv_food.inventory = @inventory;
+    inv_food.food =Food.find(params[:food])
+
+    redirect_to(request.env['HTTP_REFERER']) if inv_food.save
+  end
+
+  
 
   def destroy; end
 
