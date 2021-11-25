@@ -1,0 +1,10 @@
+    <tr>
+      <td><%= food.name %></td>
+      <td><%= "#{food.measurement_unit}" %></td>
+      <td><%= "#{food.price}" %></td>
+      <td>
+        <% if(food.user_id == @current_user.id) %>
+          <%= button_to "Delete", foods_destroy_path(id: food.id), method: :post, class: 'delete-btn'  %>
+        <% end %>
+      </td>
+    </tr>
