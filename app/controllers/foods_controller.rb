@@ -4,7 +4,7 @@ class FoodsController < ApplicationController
   def index
     @foods = Food.all.order(created_at: :desc)
     @current_user = current_user
-    @measurement = [['kg', 'kg'], ['gramme', 'gramme'], ['unit', 'unit']]
+    @measurement = [%w[kg kg], %w[gramme gramme], %w[unit unit]]
   end
 
   def create
