@@ -11,10 +11,12 @@
     <p>cooking time: <%= @recipe.cooking_time%>mins</p>
     <h3>steps goes here</h3>
     <p> <%= @recipe.description %> </p>
+    <% if can? :update, @recipe%>
     <div class="recipe_b_s">
       <%= button_to "Generate shopping list", recipes_destroy_path, class: 'create_btn'%>
       <%= button_to "Add ingredients", recipes_destroy_path, class: 'create_btn' %>
     </div>
+    <% end %>
     <div class="separation-bar">
     </div>
     <% if(@recipe_foods.length > 0) %>

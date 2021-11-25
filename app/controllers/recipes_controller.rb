@@ -17,19 +17,42 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new
-    @recipe.user_id = current_user.id
-    @recipe.name = params[:name]
-    @recipe.preparation_time = params[:preparation_time]
-    @recipe.cooking_time = params[:cooking_time]
-    @recipe.description = params[:description]
-    @recipe.is_public = params[:is_public] == '1'
-    redirect_to('/recipes/my_recipes', notice: 'recipe created succesfully') if @recipe.save
+    if can? :create, @recipe
+      @recipe = Recipe.new
+      @recipe.user_id = current_user.id
+      @recipe.name = params[:name]
+      @recipe.preparation_time = params[:preparation_time]
+      @recipe.cooking_time = params[:cooking_time]
+      @recipe.description = params[:description]
+      @recipe.is_public = params[:is_public] == '1'
+      redirect_to('/recipes/my_recipes', notice: 'recipe created succesfully') if @recipe.save
+    else
+      redirect_to(request.env['HTTP_REFERER'], notice: 'you dont have access')
+    end
   end
 
   def destroy
+    if can? :destroy, @recipe
+      @recipe = Recipe.find(params[:id])
+      @recipe.destroy
+      redirect_to(request.env['HTTP_REFERER'], notice: 'recipe deleted succesfully')
+    else
+      redirect_to(request.env['HTTP_REFERER'], notice: 'you dont have access')
+    end
+  end
+
+  def change
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy
-    redirect_to(request.env['HTTP_REFERER'], notice: 'recipe deleted succesfully')
+    if can? :update, @recipe
+      if @recipe.is_public
+        @recipe.is_public = false
+        redirect_to(request.env['HTTP_REFERER'], notice: 'recipe changed to public succesfully')
+      else
+        @recipe.is_public = true
+        redirect_to(request.env['HTTP_REFERER'], notice: 'recipe changed to private succesfully')
+      end
+    else
+      redirect_to(request.env['HTTP_REFERER'], notice: 'you dont have access')
+    end
   end
 end
