@@ -3,9 +3,9 @@
 <a href =<%= request.original_url+"/"+inventory.id.to_s %> class="-a r-name">
 <h2 id=<%="inventory-"+inventory.id.to_s+"-name" %> class="i-name"><%= inventory.name %></h2>
 </a>
-  <%= button_to "Delete", recipes_destroy_path(id: inventory.id), method: :post, class: 'delete-btn'  %>
+  <%= button_to "Delete", inventories_destroy_path(id: inventory.id), method: :post, class: 'delete-btn'  %>
 </div>
 <div class="i-right">
-<p id=<%="inventory-"+inventory.id.to_s+"-summary" %> class = "r-description"><%= inventory.description %></p>
+<p id=<%="inventory-"+inventory.id.to_s+"-summary" %> class = "dont-overflow"><%= inventory.description %></p>
 </div>
 </div>

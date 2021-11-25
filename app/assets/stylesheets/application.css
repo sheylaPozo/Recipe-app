@@ -73,3 +73,33 @@ body {
   border-radius: 5px;
   padding: 4px 12px 4px 12px;
 }
+
+.dont-overflow {
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+table {
+  width: 750px;
+  border-collapse: collapse;
+  margin: 50px auto;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+
+th {
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+}
+
+td,
+th {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 18px;
+}

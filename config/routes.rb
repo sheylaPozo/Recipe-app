@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/inventories', to: 'inventories#index'
   post '/inventories/create', to: 'inventories#create'
   post '/inventories/destroy', to: 'inventories#destroy'
+  post 'inventories/:inventory_id/add', to: 'inventories#add'
+  post 'inventories/:inventory_id/remove/:inv_fod_id', to: 'inventories#remove'
   get 'inventories/:inventory_id', to: 'inventories#show'
   get '/inventories/compare/:recipes_id/inventory_id', to: 'inventories#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
