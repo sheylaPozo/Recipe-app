@@ -18,7 +18,7 @@ user.save!
   user = User.new
   user.name = "User ##{i + 1}"
   user.email = "test#{i + 1}@example.com"
-  user.password = 'taawktljasktlw4aaglj'
+  user.password = '1245'
   user.skip_confirmation!
   user.save!
   3.times do |j|
