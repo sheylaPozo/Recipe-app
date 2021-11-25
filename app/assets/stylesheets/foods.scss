@@ -3,14 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .food-container {
-    width: 600px;
-    margin: 2rem auto auto auto;
+  width: 600px;
+  margin: 2rem auto auto auto;
 
   .add-food-btn {
     margin-bottom: 1rem;
     display: block;
   }
-  
+
   table {
     background-color: lightcyan;
   }
@@ -36,7 +36,7 @@
     display: flex;
     padding: 0.5rem 0 0.2rem 0;
   }
-  
+
   input {
     padding: 0.3rem;
     border: 0.1rem solid #ccc;
@@ -47,7 +47,7 @@
     margin-top: 1rem;
   }
 }
-  
+
 .food-form-errors {
   margin: 1rem 0 1rem 0;
   display: flex;
