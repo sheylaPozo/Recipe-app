@@ -8,8 +8,13 @@ class RecipesController < ApplicationController
   def new_recipe; end
 
   def show
-    @recipe = Recipe.find(params[:recipe_id])
+    @current_user = current_user
+
+    @recipe = @current_user.recipes.find(params[:recipe_id])
     @recipe_foods = @recipe.recipe_foods.all
+    @already_inside = @recipe_foods.pluck(:food_id)
+
+    @food_options = Food.where.not(id: @already_inside)
   end
 
   def my_recipes
@@ -42,17 +47,43 @@ class RecipesController < ApplicationController
   end
 
   def change
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
     if can? :update, @recipe
       if @recipe.is_public
         @recipe.is_public = false
-        redirect_to(request.env['HTTP_REFERER'], notice: 'recipe changed to public succesfully')
       else
         @recipe.is_public = true
-        redirect_to(request.env['HTTP_REFERER'], notice: 'recipe changed to private succesfully')
       end
+      @recipe.save
+      redirect_to("/recipes/#{@recipe.id}", notice: 'recipe status to private succesfully') 
     else
-      redirect_to(request.env['HTTP_REFERER'], notice: 'you dont have access')
+      redirect_to("/recipes/#{@recipe.id}", notice: 'you dont have access')
+    end
+  end
+
+  def add
+    @current_user = current_user
+    @recipe = @current_user.recipes.find(params[:recipe_id])
+    if can? :update, @recipe
+      rec_food = RecipeFood.new
+      @food = Food.find(params[:food])
+      rec_food.recipe = @recipe
+      rec_food.quantity = params[:quantity]
+      rec_food.food = @food
+      redirect_to(request.env['HTTP_REFERER']) if rec_food.save
+    else
+      redirect_to(request.env['HTTP_REFERER'])
+    end
+  end
+
+  def remove
+    @recipe = current_user.recipes.find(params[:recipe_id])
+    if can? :update, @recipe
+      @current_user = current_user
+      rec_food = RecipeFood.find(params[:rec_food_id])
+      redirect_to(request.env['HTTP_REFERER']) if rec_food.destroy
+    else
+      redirect_to(request.env['HTTP_REFERER'])
     end
   end
 end

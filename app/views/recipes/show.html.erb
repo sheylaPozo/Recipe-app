@@ -5,7 +5,20 @@
     <div class="recipe_d_h">
       <p>preparation time: <%= @recipe.preparation_time%>mins</p>
       <div>
-        <p>public</p>
+      <% if can? :update, @recipe%>
+        <% if @recipe.is_public%>
+        <%= button_to "Public", "/recipes/#{@recipe.id}/change", class: 'create_btn' %>
+        <% else %>
+        <%= button_to "Private", "/recipes/#{@recipe.id}/change", class: 'create_btn' %>
+        <% end %>
+      <% else %> 
+      <% if @recipe.is_public%>
+        <h3>Public</h3>
+        <% else %>
+        <%= button_to "Private", "/recipes/#{@recipe.id}/change", class: 'create_btn' %>
+        <h3>Private</h3>
+        <% end %>
+      <% end %>
       </div>
     </div>
     <p>cooking time: <%= @recipe.cooking_time%>mins</p>
@@ -13,8 +26,20 @@
     <p> <%= @recipe.description %> </p>
     <% if can? :update, @recipe%>
     <div class="recipe_b_s">
-      <%= button_to "Generate shopping list", recipes_destroy_path, class: 'create_btn'%>
-      <%= button_to "Add ingredients", recipes_destroy_path, class: 'create_btn' %>
+      <%= button_to "Generate shopping list", recipes_destroy_path, class: 'create_btn down'%>
+      <% if(@food_options.length > 0) %>
+<%= form_with model: @recipe_food, class: "inventory-food-form", url: "/recipes/#{@recipe.id}/add" do |form| %>
+  <h3 class="">Add Food: </h3>
+  <%= form.label :food %>
+  <%= form.collection_select :food, @food_options ,:id , :name %>
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity, min: 1, value: 1 %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= form.submit "Submit", class: "submit" %>
+  <% end %>
+  <% else %>
+  <h3 class="">There is not food to add </h3>
+  <% end %>
     </div>
     <% end %>
     <div class="separation-bar">
@@ -30,7 +55,7 @@
         </thead>
         <tbody>
           <% @recipe.recipe_foods.each do |recipe_food| %>
-            <%= render partial: "recipe_food/recipe_food", object: recipe_food %>
+            <%= render partial: "inventories/inventory_food", object: recipe_food %>
           <% end %>
         </tbody>
       </table>
