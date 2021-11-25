@@ -1,3 +1,38 @@
 <%= render partial: "shared/header" %>
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class='container'>
+  <h1><%= @recipe.name %></h1>
+  <div class="recipe_d">
+    <div class="recipe_d_h">
+      <p>preparation time: <%= @recipe.preparation_time%>mins</p>
+      <div>
+        <p>public</p>
+      </div>
+    </div>
+    <p>cooking time: <%= @recipe.cooking_time%>mins</p>
+    <h3>steps goes here</h3>
+    <p> <%= @recipe.description %> </p>
+    <div class="recipe_b_s">
+      <%= button_to "Generate shopping list", recipes_destroy_path, class: 'create_btn'%>
+      <%= button_to "Add ingredients", recipes_destroy_path, class: 'create_btn' %>
+    </div>
+    <div class="separation-bar">
+    </div>
+    <% if(@recipe_foods.length > 0) %>
+      <table>
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Quantity Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recipe.recipe_foods.each do |recipe_food| %>
+            <%= render partial: "recipe_food/recipe_food", object: recipe_food %>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+<%= javascript_pack_tag 'modal_js' %>
