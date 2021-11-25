@@ -1,18 +1,20 @@
 <%= render partial: "shared/header" %>
 <div class="container">
   <h1 class="inventory-title">Foods</h1>
-  <%= form_with model: @food, class: "inventory-food-form", url: foods_create_path do |form| %>
-    <h3 class="">Create Food: </h3>
-    <%= form.label :name, 'Name' %>
-    <%= form.text_field :name%>
-    <%= form.label :measurement_unit %>
-    <%= form.select :measurement_unit, @measurement%> 
-    <%= form.label :price, 'Unit price' %>
-    <%= form.number_field :price, min: 1, value: 1 %>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= form.submit "Submit", class: "submit" %>
+  <% if @current_user != nil %>
+    <%= form_with model: @food, class: "inventory-food-form", url: foods_create_path do |form| %>
+      <h3 class="">Create Food: </h3>
+      <%= form.label :name, 'Name' %>
+      <%= form.text_field :name%>
+      <%= form.label :measurement_unit %>
+      <%= form.select :measurement_unit, @measurement%> 
+      <%= form.label :price, 'Unit price' %>
+      <%= form.number_field :price, min: 1, value: 1 %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= form.submit "Submit", class: "submit" %>
+    <% end %>
+    <div class="separation-bar"></div>
   <% end %>
-  <div class="separation-bar"></div>
   <% if(@foods.length > 0) %>
   <table>
     <thead>
