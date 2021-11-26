@@ -88,7 +88,7 @@ class InventoriesController < ApplicationController
         hash['quantity'] = recipe_food.quantity - inventory_food.quantity
         hash['unit'] = recipe_food.food.measurement_unit
         hash['price'] = hash['quantity'] * recipe_food.food.price
-        @total = total + hash['price']
+        @total += hash['price']
         @result.push(hash)
       end
     else
