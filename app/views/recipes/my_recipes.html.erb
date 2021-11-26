@@ -1,0 +1,22 @@
+<%= render partial: "shared/header" %>
+<div class="container">
+  <h1>My Recipes</h1>
+  <div class='create_btn_div'>
+    <%= link_to 'Create recipe', recipes_create_recipe_path, class: 'create_btn'%>
+  </div>
+  <div class='recipes'>
+    <% @recipes.each do |recipe|%>
+      <div class='recipe'>
+        <div class='left'>
+          <a href=<%=recipe.id.to_s %> >
+            <p class='r-name'><%= recipe.name%> </p>
+          </a>
+          <%= button_to "Delete", recipes_destroy_path(id: recipe.id), method: :post, class: 'delete-btn'  %>
+        </div>
+        <div class='right'>
+          <p class='r-description'><%= recipe.description%></p>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

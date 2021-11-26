@@ -1,0 +1,30 @@
+<%= render partial: "shared/header" %>
+<div class="container">
+<h1 class="inventory-title">Shopping List</h1>
+<div class="shopping-messages">
+<p class="inv-d">Amount of food to buy: <%= @result.size %></p>
+<p class="inv-d">Recipe: <a href=<%= "/recipes/#{@recipe.id}"%>><%= @recipe.name %></a></p>
+<p class="inv-d">Total value of food needed $<%= @total %></p>
+<p class="inv-d">Inventory: <a href=<%="/inventories/#{@inventory.id}"%> ><%= @inventory.name %></a></p>
+</div>
+ <div class="separation-bar">
+  <% if(@inventory.inventory_foods.length > 0) %>
+  <table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @result.each do |element| %>
+<% @element = OpenStruct.new(element) %>
+  <%= render partial: "inventories/element", object: @element %>
+<% end %>
+  </tbody>
+</table>
+<% end %>
+
+</div>
+

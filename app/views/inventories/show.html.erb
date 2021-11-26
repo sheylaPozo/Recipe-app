@@ -1,0 +1,35 @@
+<%= render partial: "shared/header" %>
+<div class="container">
+<h1 class="inventory-title"><%= @inventory.name %></h1>
+<p class="inventory-description dont-overflow"><%= @inventory.description %></p>
+<% if(@food_options.length > 0) %>
+<%= form_with model: @inventory_food, class: "inventory-food-form", url: "/inventories/#{@inventory.id}/add" do |form| %>
+  <h3 class="">Add Food: </h3>
+  <%= form.label :food %>
+  <%= form.collection_select :food, @food_options ,:id , :name %>
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity, min: 1, value: 1 %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= form.submit "Submit", class: "submit" %>
+  <% end %>
+  <% else %>
+  <h3 class="">There is not food to add </h3>
+  <% end %>
+  <div class="separation-bar">
+  <% if(@inventory_foods.length > 0) %>
+  <table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @inventory.inventory_foods.each do | inventory_food | %>
+  <%= render partial: "inventories/inventory_food", object: inventory_food %>
+<% end %>
+  </tbody>
+</table>
+<% end %>
+</div>
