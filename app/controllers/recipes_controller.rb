@@ -89,7 +89,6 @@ class RecipesController < ApplicationController
   end
 
   def create_shopping_list
-
     @recipe = Recipe.find(params[:recipe_id])
     @inventory_id = params[:inventory]
     redirect_to("/inventories/compare/#{@recipe.id}/#{@inventory_id}")
