@@ -60,24 +60,14 @@ rails s
 ### Test
 
 ```sh
-rspec
+rspec specs
 ```
 
-### Troubleshoot
+### .env
 
 ```sh
-### Rspec failing
-RAILS_ENV=test rake db:reset
-```
-
-```sh
-### New Scaffold
-rails g scaffold_controller model
-```
-
-```sh
-### Undo migration
-rake db:migrate VERSION=0
+GMAIL_USERNAME=your_email@example.com
+GMAIL_PASSWORD=password
 ```
 
 ## Authors
