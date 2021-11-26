@@ -72,26 +72,24 @@ class InventoriesController < ApplicationController
 
   def compare
     @result = []
-    @amount = 0;
-    @total = 0;
+    @amount = 0
+    @total = 0
     @current_user = current_user
     @inventory = @current_user.inventories.find(params[:inventory_id])
     @recipe = Recipe.find(params[:recipes_id])
     if (can? :read, @recipe) && !@inventory.nil?
       @recipe.recipe_foods.each do |recipe_food|
         inventory_food = @inventory.inventory_foods.find_by(food_id: recipe_food.food.id)
-        if inventory_food!=nil
-          if(inventory_food.quantity < recipe_food.quantity)
-            hash = Hash.new
-            @amount = @amount +1;
-            hash['name'] = recipe_food.food.name
-            hash["quantity"] = recipe_food.quantity - inventory_food.quantity
-            hash["unit"] = recipe_food.food.measurement_unit
-            hash["price"] = hash["quantity"]* recipe_food.food.price
-            @total = total + hash["price"]
-            @result.push(hash)
-          end
-        end
+        next unless !inventory_food.nil? && inventory_food.quantity < recipe_food.quantity
+
+        hash = {}
+        @amount += 1
+        hash['name'] = recipe_food.food.name
+        hash['quantity'] = recipe_food.quantity - inventory_food.quantity
+        hash['unit'] = recipe_food.food.measurement_unit
+        hash['price'] = hash['quantity'] * recipe_food.food.price
+        @total = total + hash['price']
+        @result.push(hash)
       end
     else
       redirect_to(request.env['HTTP_REFERER'], notice: 'Not Access')
