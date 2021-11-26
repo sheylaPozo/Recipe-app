@@ -20,7 +20,7 @@
   <tbody>
 <% @result.each do |element| %>
 <% @element = OpenStruct.new(element) %>
-  <%= render partial: "inventories/inventory_food", object: @element %>
+  <%= render partial: "inventories/element", object: @element %>
 <% end %>
   </tbody>
 </table>

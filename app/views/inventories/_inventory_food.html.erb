@@ -1,5 +1,5 @@
     <tr>
-      <td><%= @element.name %></td>
-      <td><%= "#{@element.quantity} #{@element.unit}" %></td>
-      <td><%= "#{@element.price}$" %></td>
+      <td><%= inventory_food.food.name %></td>
+      <td><%= "#{inventory_food.quantity} #{inventory_food.food.measurement_unit}" %></td>
+      <td><%= button_to "Delete", "#{request.url}" +"/remove/#{inventory_food.id}", method: :post, class: 'delete-btn'  %></td>
     </tr>
