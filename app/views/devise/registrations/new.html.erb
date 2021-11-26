@@ -1,6 +1,9 @@
-<h2>Sign up</h2>
+<div class='form-page'>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="form-container">
+<h2>Sign up</h2>
+      <div class="separation-bar"></div>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -32,3 +35,10 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<div class='go-back'>
+        <a href= javascript:history.back() class='delete-btn'>
+          Go Back
+        </a>
+      </div>
+</div>
+</div>
