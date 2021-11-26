@@ -1,3 +1,79 @@
 <%= render partial: "shared/header" %>
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="modal-background">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Multi - Post stories</h2>
+        <div class="X">
+          <p >X</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class='container'>
+  <h1><%= @recipe.name %></h1>
+  <div class="recipe_d">
+    <div class="recipe_d_h">
+      <p>preparation time: <%= @recipe.preparation_time%>mins</p>
+      <div>
+      <% if can? :update, @recipe%>
+        <% if @recipe.is_public%>
+        <%= button_to "Public", "/recipes/#{@recipe.id}/change", class: 'create_btn' %>
+        <% else %>
+        <%= button_to "Private", "/recipes/#{@recipe.id}/change", class: 'create_btn' %>
+        <% end %>
+      <% else %> 
+      <% if @recipe.is_public%>
+        <h3>Public</h3>
+        <% else %>
+        <%= button_to "Private", "/recipes/#{@recipe.id}/change", class: 'create_btn' %>
+        <h3>Private</h3>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <p>cooking time: <%= @recipe.cooking_time%>mins</p>
+    <h3>steps goes here</h3>
+    <p> <%= @recipe.description %> </p>
+    <div class="recipe_b_s">
+    <% if user_signed_in? %>
+      <%= button_tag "Generate shopping list", id: "modal-displayer" , class: 'create_btn down'%>
+    <%end%>
+      <% if can? :update, @recipe%>
+      <% if(@food_options.length > 0) %>
+<%= form_with model: @recipe_food, class: "inventory-food-form", url: "/recipes/#{@recipe.id}/add" do |form| %>
+  <h3 class="">Add Food: </h3>
+  <%= form.label :food %>
+  <%= form.collection_select :food, @food_options ,:id , :name %>
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity, min: 1, value: 1 %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= form.submit "Submit", class: "submit" %>
+  <% end %>
+  <% else %>
+  <h3 class="">There is not food to add </h3>
+  <% end %>
+    <% end %>
+        </div>
+    <div class="separation-bar">
+    </div>
+    <% if(@recipe_foods.length > 0) %>
+      <table>
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Quantity Name</th>
+            <% if can? :update, @recipe%>
+            <th>Action</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recipe.recipe_foods.each do |recipe_food| %>
+            <%= render partial: "recipes/recipe_food", object: recipe_food %>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+<%= javascript_pack_tag 'modal_js' %>
