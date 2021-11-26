@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
     @already_inside = @recipe_foods.pluck(:food_id)
 
     @food_options = Food.where.not(id: @already_inside)
+    @inventories = Inventory.where(user_id: @current_user.id)
   end
 
   def my_recipes
@@ -85,5 +86,12 @@ class RecipesController < ApplicationController
     else
       redirect_to(request.env['HTTP_REFERER'])
     end
+  end
+
+  def create_shopping_list
+
+    @recipe = Recipe.find(params[:recipe_id])
+    @inventory_id = params[:inventory]
+    redirect_to("/inventories/compare/#{@recipe.id}/#{@inventory_id}")
   end
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/recipes/:recipe_id', to: 'recipes#show'
   post '/recipes/create', to: 'recipes#create'
   get '/recipes/:recipe_id', to: 'recipes#show'
+  post '/recipes/:recipe_id/generate', to: 'recipes#create_shopping_list'
   post '/recipes/:recipe_id/change', to: 'recipes#change'
   post '/recipes/:recipe_id/add', to: 'recipes#add'
   post '/recipes/:recipe_id/remove/:rec_food_id', to: 'recipes#remove'

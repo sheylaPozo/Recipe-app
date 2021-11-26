@@ -2,10 +2,18 @@
 <div class="modal-background">
     <div class="modal">
       <div class="modal-header">
-        <h2 class="modal-title">Multi - Post stories</h2>
+        <h2 class="modal-title">Generating shopping list</h2>
         <div class="X">
           <p >X</p>
         </div>
+      </div>
+      <div class='modal-body'>
+        <h3>Choose an inventory to use</h3>
+        <%= form_with  url: "/recipes/#{@recipe.id}/generate" do |form| %>
+          <%= form.label :inventory %>
+          <%= form.collection_select :inventory, @inventories ,:id , :name %>
+          <%= form.submit "Generate", class: "create_btn" %>
+        <% end %>
       </div>
     </div>
   </div>
