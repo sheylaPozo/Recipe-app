@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
 class RecipeFood < ApplicationRecord
-  belongs_to :recipe
   belongs_to :food
-
-  validates :quantity, :food_id, presence: true
-
-  def total_price
-    quantity * food.price
-  end
+  belongs_to :recipe
 end
