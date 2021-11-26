@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def show
     @current_user = current_user
 
-    @recipe = @current_user.recipes.find(params[:recipe_id])
+    @recipe = Recipe.find(params[:recipe_id])
     @recipe_foods = @recipe.recipe_foods.all
     @already_inside = @recipe_foods.pluck(:food_id)
 

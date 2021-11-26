@@ -1,4 +1,14 @@
 <%= render partial: "shared/header" %>
+<div class="modal-background">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Multi - Post stories</h2>
+        <div class="X">
+          <p >X</p>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class='container'>
   <h1><%= @recipe.name %></h1>
   <div class="recipe_d">
@@ -24,9 +34,9 @@
     <p>cooking time: <%= @recipe.cooking_time%>mins</p>
     <h3>steps goes here</h3>
     <p> <%= @recipe.description %> </p>
-    <% if can? :update, @recipe%>
     <div class="recipe_b_s">
-      <%= button_to "Generate shopping list", recipes_destroy_path, class: 'create_btn down'%>
+      <%= button_tag "Generate shopping list", id: "modal-displayer" , class: 'create_btn down'%>
+      <% if can? :update, @recipe%>
       <% if(@food_options.length > 0) %>
 <%= form_with model: @recipe_food, class: "inventory-food-form", url: "/recipes/#{@recipe.id}/add" do |form| %>
   <h3 class="">Add Food: </h3>
@@ -40,8 +50,8 @@
   <% else %>
   <h3 class="">There is not food to add </h3>
   <% end %>
-    </div>
     <% end %>
+        </div>
     <div class="separation-bar">
     </div>
     <% if(@recipe_foods.length > 0) %>

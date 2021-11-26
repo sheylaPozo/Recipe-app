@@ -152,67 +152,68 @@
 
 
 /* styling of my modal ------------------------------------------ */
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-.modal-pics {
-  width: 100%;
-  height: 100%;
-}
-
-.modal-divider {
-  width: 100%;
-  height: 1px;
-  background-color: rgb(231, 231, 231);
-}
-
-.modal-icon {
-  color: #6070ff;
-}
-
-.modal-links {
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
   display: flex;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  visibility: hidden;
+  background-color: transparent;
 }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  border-radius: 15px;
+.modal {
+  display: flex;
+  width: 87.2vw;
+  height: 90vh;
+  position: fixed;
+  background-color: rgba(128, 128, 128, 0.45);
+  z-index: 3;
+  flex-direction: column;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  color: white;
+  font-size: 20px;
+  overflow: scroll;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.modal::-webkit-scrollbar {
+  display: none;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 85.3211009174312%;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-title {
+  font-size: 20px;
+  align-self: center;
+  color: white;
+  text-align: left;
+}
+
+.X {
+  margin-left: auto;
+  position: fixed;
+  left: 85%;
+  top: 12%;
   cursor: pointer;
 }
+
+
+/* The Modal (background) */
+
 
 .down {
   margin-top: 57px;
