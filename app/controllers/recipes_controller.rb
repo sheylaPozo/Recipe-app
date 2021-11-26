@@ -15,9 +15,7 @@ class RecipesController < ApplicationController
     @already_inside = @recipe_foods.pluck(:food_id)
 
     @food_options = Food.where.not(id: @already_inside)
-    if user_signed_in?
-    @inventories = Inventory.where(user_id: @current_user.id)
-    end
+    @inventories = Inventory.where(user_id: @current_user.id) if user_signed_in?
   end
 
   def my_recipes
