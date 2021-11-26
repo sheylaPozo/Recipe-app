@@ -1,4 +1,5 @@
 <%= render partial: "shared/header" %>
+<% if user_signed_in? %>
 <div class="modal-background">
     <div class="modal">
       <div class="modal-header">
@@ -17,6 +18,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 <div class='container'>
   <h1><%= @recipe.name %></h1>
   <div class="recipe_d">

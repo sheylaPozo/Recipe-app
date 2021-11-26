@@ -15,7 +15,9 @@ class RecipesController < ApplicationController
     @already_inside = @recipe_foods.pluck(:food_id)
 
     @food_options = Food.where.not(id: @already_inside)
+    if user_signed_in?
     @inventories = Inventory.where(user_id: @current_user.id)
+    end
   end
 
   def my_recipes
@@ -40,6 +42,9 @@ class RecipesController < ApplicationController
   def destroy
     if can? :destroy, @recipe
       @recipe = Recipe.find(params[:id])
+      @recipe.recipe_foods.each do |recipe_food|
+        RecipeFood.delete_by(id: recipe_food.id)
+      end
       @recipe.destroy
       redirect_to(request.env['HTTP_REFERER'], notice: 'recipe deleted succesfully')
     else
