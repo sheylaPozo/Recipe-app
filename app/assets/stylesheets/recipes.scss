@@ -167,11 +167,12 @@
 }
 
 .modal {
+  border-radius: 10px;
   display: flex;
-  width: 87.2vw;
-  height: 90vh;
+  width: 57.2vw;
+  height: 50vh;
   position: fixed;
-  background-color: rgba(128, 128, 128, 0.45);
+  background-color: rgb(77, 77, 77);
   z-index: 3;
   flex-direction: column;
   border-width: 1px;
@@ -179,7 +180,7 @@
   border-color: white;
   color: white;
   font-size: 20px;
-  overflow: scroll;
+  // overflow: scroll;
 }
 
 .modal::-webkit-scrollbar {
@@ -188,8 +189,8 @@
 
 .modal-header {
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
+  justify-content: space-between;
   width: 85.3211009174312%;
   margin-top: 24px;
   margin-left: auto;
@@ -203,11 +204,15 @@
   text-align: left;
 }
 
+.modal-body {
+  margin-left: 2rem;
+}
+
 .X {
-  margin-left: auto;
-  position: fixed;
-  left: 85%;
-  top: 12%;
+  // margin-left: auto;
+  // position: fixed;
+  // left: 55%;
+  // top: 12%;
   cursor: pointer;
 }
 
