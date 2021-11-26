@@ -290,6 +290,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails (~> 5.0.2)
   rswag
+  rswag-specs
   sass-rails (>= 6)
   selenium-webdriver
   turbolinks (~> 5)
