@@ -138,3 +138,81 @@
 .go-back {
   align-self: flex-start;
 }
+
+//recipe show page
+.recipe_d {
+  width: 60vw;
+  font-family: sans-serif;
+}
+
+.recipe_d_h,
+.recipe_b_s {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* styling of my modal ------------------------------------------ */
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  visibility: hidden;
+  background-color: transparent;
+}
+
+.modal {
+  display: flex;
+  width: 87.2vw;
+  height: 90vh;
+  position: fixed;
+  background-color: rgba(128, 128, 128, 0.45);
+  z-index: 3;
+  flex-direction: column;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  color: white;
+  font-size: 20px;
+  overflow: scroll;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 85.3211009174312%;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-title {
+  font-size: 20px;
+  align-self: center;
+  color: white;
+  text-align: left;
+}
+
+.X {
+  margin-left: auto;
+  position: fixed;
+  left: 85%;
+  top: 12%;
+  cursor: pointer;
+}
+
+/* The Modal (background) */
+
+.down {
+  margin-top: 57px;
+}
