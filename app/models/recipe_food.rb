@@ -10,3 +10,4 @@ class RecipeFood < ApplicationRecord
     quantity * food.price
   end
 end
+

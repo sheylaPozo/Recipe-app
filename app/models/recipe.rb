@@ -11,3 +11,4 @@ class Recipe < ApplicationRecord
     foods.sum(&:price)
   end
 end
+
