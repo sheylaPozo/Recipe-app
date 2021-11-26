@@ -34,7 +34,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner'
   gem 'rspec-rails', '~> 5.0.2'
+  gem 'rails-controller-testing'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -42,7 +45,6 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
-  gem 'database_cleaner'
   gem 'rack-mini-profiler', '~> 2.0'
 end
 
@@ -51,7 +53,6 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'rails-controller-testing'
   gem 'webdrivers'
 end
 
