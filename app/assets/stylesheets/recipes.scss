@@ -145,11 +145,11 @@
   font-family: sans-serif;
 }
 
-.recipe_d_h, .recipe_b_s {
+.recipe_d_h,
+.recipe_b_s {
   display: flex;
   justify-content: space-between;
 }
-
 
 /* styling of my modal ------------------------------------------ */
 .modal-background {
@@ -211,9 +211,7 @@
   cursor: pointer;
 }
 
-
 /* The Modal (background) */
-
 
 .down {
   margin-top: 57px;

@@ -62,12 +62,14 @@
           <tr>
             <th>Food</th>
             <th>Quantity Name</th>
+            <% if can? :update, @recipe%>
             <th>Action</th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
           <% @recipe.recipe_foods.each do |recipe_food| %>
-            <%= render partial: "inventories/inventory_food", object: recipe_food %>
+            <%= render partial: "recipes/recipe_food", object: recipe_food %>
           <% end %>
         </tbody>
       </table>
