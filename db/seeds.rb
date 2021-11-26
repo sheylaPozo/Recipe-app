@@ -7,13 +7,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.new
-user.name = 'administrator'
-user.email = 'admin@example.com'
-user.password = 'administrator'
-user.role = 'admin'
-user.skip_confirmation!
-user.save!
 6.times do |i|
   user = User.new
   user.name = "User ##{i + 1}"
@@ -34,13 +27,6 @@ user.save!
 end
 
 #for moses testing
-user = User.new
-user.name = 'administrator2'
-user.email = 'admin2@example.com'
-user.password = 'administrator'
-user.role = 'admin'
-user.skip_confirmation!
-user.save!
 3.times do |j|
   Recipe.create(
     name: "Recipe ##{j + 1} ", 
