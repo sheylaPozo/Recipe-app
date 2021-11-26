@@ -5,10 +5,6 @@ class Recipe < ApplicationRecord
   belongs_to :user
 
   def change
-    if self.is_public == true
-      self.is_public = false
-    else
-      self.is_public = true
-    end
+    self.is_public = is_public != true
   end
 end

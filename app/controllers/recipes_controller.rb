@@ -49,13 +49,13 @@ class RecipesController < ApplicationController
   def change
     @recipe = Recipe.find(params[:recipe_id])
     if can? :update, @recipe
-      if @recipe.is_public
-        @recipe.is_public = false
-      else
-        @recipe.is_public = true
-      end
+      @recipe.is_public = if @recipe.is_public
+                            false
+                          else
+                            true
+                          end
       @recipe.save
-      redirect_to("/recipes/#{@recipe.id}", notice: 'recipe status to private succesfully') 
+      redirect_to("/recipes/#{@recipe.id}", notice: 'recipe status to private succesfully')
     else
       redirect_to("/recipes/#{@recipe.id}", notice: 'you dont have access')
     end
