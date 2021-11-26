@@ -6,6 +6,7 @@ class Ability
   def initialize(user)
     can :read, :all
     cannot :read, :inventories
+    cannot :read, :recipes, is_public: false
 
     return unless user.present?
 
