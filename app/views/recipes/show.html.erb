@@ -35,7 +35,9 @@
     <h3>steps goes here</h3>
     <p> <%= @recipe.description %> </p>
     <div class="recipe_b_s">
+    <% if user_signed_in? %>
       <%= button_tag "Generate shopping list", id: "modal-displayer" , class: 'create_btn down'%>
+    <%end%>
       <% if can? :update, @recipe%>
       <% if(@food_options.length > 0) %>
 <%= form_with model: @recipe_food, class: "inventory-food-form", url: "/recipes/#{@recipe.id}/add" do |form| %>
