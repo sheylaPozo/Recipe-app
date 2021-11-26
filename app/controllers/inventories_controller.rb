@@ -21,7 +21,6 @@ class InventoriesController < ApplicationController
   def create
     @inventory = Inventory.new
     user = current_user
-    temp = params[:inventory]
     description = params[:description]
     name = params[:name]
     @inventory.description = description
@@ -82,16 +81,15 @@ class InventoriesController < ApplicationController
         inventory_food = @inventory.inventory_foods.find_by(food_id: recipe_food.food.id)
         if !inventory_food.nil? && inventory_food.quantity < recipe_food.quantity
 
-        hash = {}
-        @amount += 1
-        hash['name'] = recipe_food.food.name
-        hash['quantity'] = recipe_food.quantity - inventory_food.quantity
-        hash['unit'] = recipe_food.food.measurement_unit
-        hash['price'] = hash['quantity'] * recipe_food.food.price
-        @total += hash['price']
-        @result.push(hash)
-      else
-        if inventory_food.nil?
+          hash = {}
+          @amount += 1
+          hash['name'] = recipe_food.food.name
+          hash['quantity'] = recipe_food.quantity - inventory_food.quantity
+          hash['unit'] = recipe_food.food.measurement_unit
+          hash['price'] = hash['quantity'] * recipe_food.food.price
+          @total += hash['price']
+          @result.push(hash)
+        elsif inventory_food.nil?
           hash = {}
           @amount += 1
           hash['name'] = recipe_food.food.name
@@ -102,9 +100,8 @@ class InventoriesController < ApplicationController
           @result.push(hash)
         end
       end
+    else
+      redirect_to(request.env['HTTP_REFERER'], notice: 'Not Access')
     end
-  else
-    redirect_to(request.env['HTTP_REFERER'], notice: 'Not Access')
-  end
   end
 end
