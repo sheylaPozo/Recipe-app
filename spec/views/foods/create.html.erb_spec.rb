@@ -19,6 +19,9 @@ RSpec.describe 'foods/create.html.erb', type: :feature do
       fill_in 'Unit price', with: '10'
       click_button 'Submit'
       expect(page).to have_content('food created succesfully')
+      expect(page).to have_content('ramen')
+      expect(page).to have_content('unit')
+      expect(page).to have_content('10')
     end
   end
 end
